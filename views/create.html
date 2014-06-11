@@ -10,6 +10,7 @@
 		<div class='col-sm-9'>
 			<input type='text' disabled value='{{nextKwitansiNo}}' class='form-control input-lg' >
 			<input type='hidden' id='kwitansiNo' name='kwitansiNo' value='{{nextKwitansiNo}}'>
+			<input type='hidden' id='hospitalName' name='hospitalName' value='{{name}}'>
 	  	</div>
 	</div>
 	<div class='form-group'>
@@ -29,12 +30,6 @@
 		</div>
 	</div>
 	<div class='form-group'>
-		<label for='kwitansiDate' class='col-sm-3 control-label lead'>Tanggal:</label>
-	  	<div class='col-sm-9'>
-			<input type='date' id='kwitansiDate' name='kwitansiDate' class='form-control input-lg' value="{{ kwitansiDate }}" />
-	  	</div>
-	</div>
-	<div class='form-group'>
 		<label for='amount' class='col-sm-3 control-label lead'>Rupiah:</label>
 	  	<div class='col-sm-9'>
 			<input type='text' id='amount' name='amount' placeholder='Cth. 450.000' class='form-control input-lg numeric' >
@@ -45,6 +40,12 @@
 		<label for='cashier' class='col-sm-3 control-label lead'>Kasir:</label>
 	  	<div class='col-sm-9'>
 			<input type='text'id='cashier' name='cashier' placeholder='Cth. Bp. Marcus' class='form-control input-lg' >
+	  	</div>
+	</div>
+	<div class='form-group'>
+		<label for='kwitansiDate' class='col-sm-3 control-label lead'>Tanggal:</label>
+	  	<div class='col-sm-9'>
+			<input type='date' id='kwitansiDate' name='kwitansiDate' class='form-control input-lg' value="{{ kwitansiDate }}" />
 	  	</div>
 	</div>
 	<div class='form-group'>

@@ -24,9 +24,7 @@ console.log('The app is listening. Port:'+ config.port);
 function *create(hospital) {
 	var vm = yield hospitalConfigs.findOne({name: hospital});
 
-	// Create current view model
-	// var highestKwitansiNo = yield kwitansis.find()
-	vm.nextKwitansiNo = vm.latestsKwitansiNo + 1;
+	vm.nextKwitansiNo = yield nextKwitansiNo(hospital)
 	vm.kwitansiDate = new Date().toISOString().slice(0,10);
 
 	this.body = yield render("create.html", vm);
@@ -43,6 +41,14 @@ function *print(hospital) {
 	vm.hospitalName = hospital;
 
 	this.body = yield render("print.html", vm);
+};
+
+function *nextKwitansiNo(hospitalName) {
+	var highestKwitansi = yield kwitansis.findOne(
+			{ hospitalName: hospitalName },
+			{ sort : {kwitansiNo : -1 }});
+
+	return parseInt(highestKwitansi.kwitansiNo) + 1;
 };
 
 
