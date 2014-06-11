@@ -39,6 +39,9 @@ function *print(hospital) {
 	// Create viewmodel
 	var vm = postedData;
 	vm.hospitalName = hospital;
+	vm.imagePath = hospital + ".jpg"
+	vm.amountText = getAmountText(vm.amount);
+	console.dir(vm);
 
 	this.body = yield render("print.html", vm);
 };
@@ -51,6 +54,10 @@ function *nextKwitansiNo(hospitalName) {
 	return parseInt(highestKwitansi.kwitansiNo) + 1;
 };
 
+var getAmountText = function (amount) {
+	return "A string parsed from amount of " + amount;
+};
+module.exports.getAmountText = getAmountText;
 
 
 

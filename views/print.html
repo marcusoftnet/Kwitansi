@@ -22,58 +22,50 @@
 <body>
 	<table border="1">
 		<tr>
-			<td><img src="{{hospitalName}}" /></td>
+			<td><img src="{{imagePath}}" /></td>
 			<td valign="top">
 				<table cellpadding="4">
 					<tr>
 						<td width="150px"><div class="lead">No kwitansi:</td>
-						<td width="200px">{% block kwitansiNo %}KwitansiNo{% endblock %}</td>
+						<td width="200px"><div class="value">{{kwitansiNo}}</div></td>
 						<td width="150px">&nbsp;</td>
 						<td width="150px">&nbsp;</td>
 					</tr>
 					<tr>
 						<td><div class="lead">Telah terima dari:</div></td>
-						<td colspan="3">{% block recievedFrom %}recievedFrom{% endblock %}</td>
+						<td colspan="3"><div class="value">{{recievedFrom}}</div></td>
 					</tr>
 					<tr>
 						<td colspan="4">&nbsp;</td>
 					</tr>
 					<tr>
 						<td><div class="lead">Untuk Pembayaran:</div></td>
-						<td colspan="3">{% block forPayments %}forPayments{% endblock %}</td>
+						<td colspan="3"><div class="value">{{forPayments}}</div></td>
 					</tr>
 					<tr>
 						<td colspan="4">&nbsp;</td>
 					</tr>
 					<tr>
-						<td colspan="3">&nbsp;</td>
-						<td><div class="lead">Tanggal</div></td>
+						<td><div class="lead">Tanggal:</div></td>
+						<td colspan="3"><div class="value">{{kwitansiDate}}</div></td>
 					</tr>
 					<tr>
-						<td colspan="3">&nbsp;</td>
-						<td>{% block recieptDate %}recieptDate{% endblock %}</td>
+						<td><div class="lead">Kasir:</div></td>
+						<td colspan="3"><div class="value">{{cashier}}</div></td>
 					</tr>
 					<tr>
 						<td colspan="4">&nbsp;</td>
-					</tr>
-					<tr>
-						<td colspan="3">&nbsp;</td>
-						<td><div class="lead">Kasir</div></td>
-					</tr>
-					<tr>
-						<td colspan="3">&nbsp;</div></td>
-						<td>{% block cashierName %}cashierName{% endblock %}</td>
 					</tr>
 					<tr>
 						<td colspan="4">&nbsp;</td>
 					</tr>
 					<tr>
 						<td><div class="lead">Rupiah:</div></td>
-						<td colspan="3">{% block amount %}amount{% endblock %}</td>
+						<td colspan="3"><div class="value-big">{{amount}} Rp.</div></td>
 					</tr>
 					<tr>
 						<td><div class="lead">Uang Sejumlah:</div></td>
-						<td colspan="3">{% block amountText %}amountText{% endblock %}</td>
+						<td colspan="3"><div class="value">{{amountText}}</div></td>
 					</tr>
 				</table>
 			</td>
@@ -84,7 +76,7 @@
 		var onPrintFinished=function(printed){
 			window.location.href= "/{{hospitalName}}";
 		}
-		onPrintFinished(window.print());
+		//onPrintFinished(window.print());
 	</script>
 </body>
 </html>
