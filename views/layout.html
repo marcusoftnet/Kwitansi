@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>{% block title %}Yayasan kwitansi{% endblock %}</title>
+	<!-- Superhero theme, of course. From http://bootswatch.com/ -->
+	<link rel='stylesheet' href='/bootstrap.min.css' />
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js'></script>
+	<script src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'></script>
+	<![endif]-->
+
+	<style type="text/css">
+		#errmsg
+		{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class='container'>
+		<div class='header'>
+			<h3 class='text-muted'>Kwitansi printing</h3>
+		</div>
+
+		<div class='jumbotron'>
+			{% block content %}
+			<p>Hmmm... there's no content here. Marcus needs to do some more work!</p>
+			{% endblock %}
+		</div>
+
+		<div class='footer'>
+			<p>&copy; Marcus Hammarberg, <a href='https://twitter.com/marcusoftnet' target='_blank'>@marcusoftnet</a> 2014</p>
+		</div>
+
+	</div> <!-- /container -->
+
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<script src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+		//called when key is pressed in textbox
+			$(".numeric").keypress(function (e) {
+				//if the letter is not digit then display error and don't type anything
+				if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+					//display error message
+					$("#errmsg")
+					.html("Hanya digit diperbolehkan")
+					.show()
+					.fadeOut("slow");
+
+					return false;
+					}
+			});
+		});
+	</script>
+</body>
+</html>

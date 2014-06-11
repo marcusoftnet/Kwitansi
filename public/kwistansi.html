@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>Yayasan kwitansi</title>
+	<style type="text/css">
+		.lead {
+			font-family: "Verdana";
+			font-size: large;
+			font-weight:bold;
+		}
+		.value {
+			font-family: "Verdana";
+			font-size: large;
+		}
+		.value-big {
+			font-family: "Verdana";
+			font-size: x-large;
+		}
+	</style>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td><img src="{{ imageName }}" /></td>
+			<td valign="top">
+				<table cellpadding="4">
+					<tr>
+						<td width="150px"><div class="lead">No kwitansi:</td>
+						<td width="200px"><div class="value">{{ kwitansiNo }}</div></td>
+						<td width="150px">&nbsp;</td>
+						<td width="150px">&nbsp;</td>
+					</tr>
+					<tr>
+						<td><div class="lead">Recieve from:</div></td>
+						<td colspan="3"><div class="value">{{ recievedFrom }}</div></td>
+					</tr>
+					<tr>
+						<td colspan="4">&nbsp;</td>
+					</tr>
+					<tr>
+						<td><div class="lead">Untuk Pembayaran:</div></td>
+						<td colspan="3"><div class="value">Pemeriksaan laboratorium (RI)</div></td>
+					</tr>
+					<tr>
+						<td colspan="4">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="3">&nbsp;</td>
+						<td><div class="lead">Tanggal</div></td>
+					</tr>
+					<tr>
+						<td colspan="3">&nbsp;</td>
+						<td><div class="value">Bandung, 09 Juni 2014</div></td>
+					</tr>
+					<tr>
+						<td colspan="4">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="3">&nbsp;</td>
+						<td><div class="lead">Kasir</div></td>
+					</tr>
+					<tr>
+						<td colspan="3">&nbsp;</div></td>
+						<td><div class="value">Marcus</div></td>
+					</tr>
+					<tr>
+						<td colspan="4">&nbsp;</td>
+					</tr>
+					<tr>
+						<td><div class="lead">Rupiah:</div></td>
+						<td colspan="3"><div class="value-big">450.000</div></td>
+					</tr>
+					<tr>
+						<td><div class="lead">Uang Sejumlah:</div></td>
+						<td colspan="3"><div class="value">empat ratus lima puluh ribu rupiah</div></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

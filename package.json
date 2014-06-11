@@ -4,12 +4,12 @@
   "description": "A simple reciept printer for the Salvation Army hospitals in Indonesia",
   "main": "app.js",
   "scripts": {
-    "start": "node --harmony app.js",
+    "start": "nodemon --harmony -e html --watch views",
     "test": "./node_modules/mocha/bin/mocha --harmony-generators -u bdd -R spec"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "."
   },
   "keywords": [
     "koa"
