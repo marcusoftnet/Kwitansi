@@ -38,22 +38,28 @@
 
 	<!-- Bootstrap core JavaScript
 	================================================== -->
-	<script src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js'></script>
 	<script type="text/javascript">
 		$(document).ready(function () {
-		//called when key is pressed in textbox
 			$(".numeric").keypress(function (e) {
-				//if the letter is not digit then display error and don't type anything
 				if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-					//display error message
 					$("#errmsg")
-					.html("Hanya digit diperbolehkan")
-					.show()
-					.fadeOut("slow");
+						.html("Hanya digit diperbolehkan")
+						.show()
+						.fadeOut("slow");
 
 					return false;
-					}
+				}
+			});
+			$(".nonempty").blur(function (e) {
+				if(e.currentTarget.value.length < 1){
+					$("#errmsg")
+						.html("Tidak boleh kosong")
+						.show()
+						.fadeOut(4000);
+					return false;
+				}
 			});
 		});
 	</script>

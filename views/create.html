@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 
-{% block title %}Create kwitansi {% endblock %}
+{% block title %}Buat baru kwitansi {% endblock %}
 
 {% block content %}
-<h1>Create new kwitansi</h1>
+<h1>Buat baru kwitansi</h1>
 <form name='kwitansiForm' action='/{{name}}' method='post' class='form-horizontal' role='form'>
 	<div class='form-group'>
 		<label for='kwitansiNo' class='col-sm-3 control-label lead'>Kwitansi:</label>
@@ -16,13 +16,13 @@
 	<div class='form-group'>
 		<label for='recievedFrom' class='col-sm-3 control-label lead'>Telah terima dari:</label>
 	  	<div class='col-sm-9'>
-			<input type='text' id='recievedFrom' name='recievedFrom' placeholder='Cth. Bidang' class='form-control input-lg' >
+			<input type='text' id='recievedFrom' name='recievedFrom' placeholder='Cth. Bidang' class='form-control input-lg nonempty' />
 	  	</div>
 	</div>
 	<div class='form-group'>
 		<label for='forPayments' class='col-sm-3 control-label lead'>Untuk Pembayaran:</label>
 	  	<div class='col-sm-9'>
-	  		<select id='forPayments' name='forPayments' class='form-control input-lg'>
+	  		<select id='forPayments' name='forPayments' class='form-control input-lg' nonempty>
   			{% for payment in forPayments %}
 	  			<option id="{{payment}}" name="{{payment}}">{{payment}}</option>
 	  		{% endfor %}
@@ -32,21 +32,24 @@
 	<div class='form-group'>
 		<label for='amount' class='col-sm-3 control-label lead'>Rupiah:</label>
 	  	<div class='col-sm-9'>
-			<input type='text' id='amount' name='amount' placeholder='Cth. 450.000' class='form-control input-lg numeric' >
-			<span id="errmsg"></span>
+			<input type='text' id='amount' name='amount' placeholder='Cth. 450.000' class='form-control input-lg numeric nonempty' />
 	  	</div>
 	</div>
 	<div class='form-group'>
 		<label for='cashier' class='col-sm-3 control-label lead'>Kasir:</label>
 	  	<div class='col-sm-9'>
-			<input type='text'id='cashier' name='cashier' placeholder='Cth. Bp. Marcus' class='form-control input-lg' >
+			<input type='text'id='cashier' name='cashier' placeholder='Cth. Bp. Marcus' class='form-control input-lg nonempty' />
 	  	</div>
 	</div>
 	<div class='form-group'>
 		<label for='kwitansiDate' class='col-sm-3 control-label lead'>Tanggal:</label>
 	  	<div class='col-sm-9'>
-			<input type='date' id='kwitansiDate' name='kwitansiDate' class='form-control input-lg' value="{{ kwitansiDate }}" />
+			<input type='date' id='kwitansiDate' name='kwitansiDate' class='form-control input-lg nonempty' value="{{ kwitansiDate }}" />
 	  	</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-9"><span id="errmsg" class="lead"></span></div>
 	</div>
 	<div class='form-group'>
 		<div class="col-sm-3"></div>
