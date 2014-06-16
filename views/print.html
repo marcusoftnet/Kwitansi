@@ -15,6 +15,9 @@
 				font-family: "Verdana";
 				font-size: x-large;
 			}
+			.td {
+				valign : "top";
+			}
 
 	  		@page { size: landscape; }
 	</style>
@@ -23,49 +26,47 @@
 	<table border="1">
 		<tr>
 			<td><img src="{{imagePath}}" /></td>
-			<td valign="top">
+			<td valign="top" width="850px">
 				<table cellpadding="4">
 					<tr>
-						<td width="150px"><div class="lead">No kwitansi:</td>
-						<td width="200px"><div class="value">{{kwitansiNo}}</div></td>
-						<td width="150px">&nbsp;</td>
-						<td width="150px">&nbsp;</td>
+						<td width="250px"><div class="lead">No kwitansi:</td>
+						<td width="600px"><div class="value">{{kwitansiNo}}</div></td>
 					</tr>
 					<tr>
 						<td><div class="lead">Telah terima dari:</div></td>
-						<td colspan="3"><div class="value">{{recievedFrom}}</div></td>
+						<td><div class="value">{{recievedFrom}}</div></td>
 					</tr>
 					<tr>
-						<td colspan="4">&nbsp;</td>
+						<td colspan="2">&nbsp;</td>
 					</tr>
 					<tr>
 						<td><div class="lead">Untuk Pembayaran:</div></td>
-						<td colspan="3"><div class="value">{{forPayments}}</div></td>
+						<td><div class="value">{{forPayments}}</div></td>
 					</tr>
 					<tr>
-						<td colspan="4">&nbsp;</td>
+						<td colspan="2">&nbsp;</td>
 					</tr>
 					<tr>
 						<td><div class="lead">Tanggal:</div></td>
-						<td colspan="3"><div class="value">{{kwitansiDate}}</div></td>
+						<td><div class="value">{{kwitansiDate}}</div></td>
 					</tr>
 					<tr>
 						<td><div class="lead">Kasir:</div></td>
-						<td colspan="3"><div class="value">{{cashier}}</div></td>
+						<td><div class="value">{{cashier}}</div></td>
 					</tr>
 					<tr>
-						<td colspan="4">&nbsp;</td>
+						<td colspan="2">&nbsp;</td>
 					</tr>
 					<tr>
-						<td colspan="4">&nbsp;</td>
+						<td colspan="2">&nbsp;</td>
 					</tr>
 					<tr>
 						<td><div class="lead">Rupiah:</div></td>
-						<td colspan="3"><div class="value-big">Rp. {{amount}}</div></td>
+						<td><div class="value-big">Rp. {{amount}}</div></td>
 					</tr>
 					<tr>
 						<td><div class="lead">Uang Sejumlah:</div></td>
-						<td colspan="3"><div class="value">{{amountText}} rupiah</div></td>
+						<td><div class="value">{{amountText}} rupiah</div></td>
 					</tr>
 				</table>
 			</td>
@@ -73,13 +74,13 @@
 	</table>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		// $(document).ready(function () {
-		// 	window.print();
-		// 	setTimeout("closePrintView()", 1000);
-		// });
-		// function closePrintView() {
-		// 	document.location.href = '/{{hospitalName}}';
-		// };
+		$(document).ready(function () {
+			window.print();
+			setTimeout("closePrintView()", 1000);
+		});
+		function closePrintView() {
+			document.location.href = '/{{hospitalName}}';
+		};
 	</script>
 </body>
 </html>
