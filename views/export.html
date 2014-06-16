@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title>Export kwitansi for {{hospitalName}}</title>
+</head>
+<body>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Kwitansi No</th>
+				<th>Telah terima dari</th>
+				<th>Untuk Pembayaran</th>
+				<th>Kasir</th>
+				<th>Tanggal</th>
+				<th>Waktu</th>
+				<th>Jumlah</th>
+				<th>Uang Sejumlah</th>
+				<th>Rumah sakit</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for k in kwitansis %}
+			<tr>
+				<td>{{k.kwitansiNo}}</td>
+				<td>{{k.recievedFrom}}</td>
+				<td>{{k.forPayments}}</td>
+				<td>{{k.cashier}}</td>
+				<td>{{k.kwitansiDate}}</td>
+				<td>{{k.kwitansiDate.toTimeString()}}</td>
+				<td>{{k.amount}}</td>
+				<td>{{k.amountText}}</td>
+				<td>{{k.hospitalName}}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html>

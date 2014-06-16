@@ -61,11 +61,11 @@
 					</tr>
 					<tr>
 						<td><div class="lead">Rupiah:</div></td>
-						<td colspan="3"><div class="value-big">{{amount}} Rp.</div></td>
+						<td colspan="3"><div class="value-big">Rp. {{amount}}</div></td>
 					</tr>
 					<tr>
 						<td><div class="lead">Uang Sejumlah:</div></td>
-						<td colspan="3"><div class="value">{{amountText}}</div></td>
+						<td colspan="3"><div class="value">{{amountText}} rupiah</div></td>
 					</tr>
 				</table>
 			</td>
@@ -73,13 +73,13 @@
 	</table>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function () {
-			window.print();
-			setTimeout("closePrintView()", 1000);
-		});
-		function closePrintView() {
-			document.location.href = '/{{hospitalName}}';
-		};
+		// $(document).ready(function () {
+		// 	window.print();
+		// 	setTimeout("closePrintView()", 1000);
+		// });
+		// function closePrintView() {
+		// 	document.location.href = '/{{hospitalName}}';
+		// };
 	</script>
 </body>
 </html>
