@@ -7,6 +7,15 @@ var serve = require('koa-static');
 // middleware
 app.use(serve(__dirname + '/public'));
 
+// Skip the favicon.ico
+app.use(function *(next){
+  if(this.url ==='/favicon.ico'){
+  	return;
+  }
+  yield next;
+});
+
+
 // routes
 var handlers = require("./routes.js");
 app.use(routes.get("/:hospital", handlers.create));
