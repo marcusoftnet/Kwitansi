@@ -4,7 +4,7 @@
   "description": "A simple reciept printer for the Salvation Army hospitals in Indonesia",
   "main": "app.js",
   "scripts": {
-    "start": "node --harmony app.js",
+    "start": "node --harmony app.js prod",
     "startLocal": "nodemon --harmony -e js,html --watch views",
     "test": "./node_modules/mocha/bin/mocha --harmony-generators -u bdd -R list -b"
   },
