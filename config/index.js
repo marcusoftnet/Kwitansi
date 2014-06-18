@@ -1,7 +1,7 @@
 var mongoProdUri = process.env.MONGOHQ_URL || 'localhost:27017/kwitansi_Prod';
 var adminUser = {
 	name : process.env.BASIC_USER || 'admin',
-	pass : process.env.BASIC_PASS || 'sscms'
+	pass : process.env.BASIC_PASS || 'yayasankwitansi'
 };
 
 var config = {

@@ -3,9 +3,16 @@ var app = module.exports = koa();
 var config = require('./config')();
 var routes = require("koa-route");
 var serve = require('koa-static');
+var mount = require('koa-mount');
+var auth = require('koa-basic-auth');
+var userAuth = require('./lib/authentication');
 
 // middleware
 app.use(serve(__dirname + '/public'));
+
+// Security
+app.use(userAuth.reqBasic);
+app.use(mount('/', auth(userAuth.user)));
 
 // Skip the favicon.ico
 app.use(function *(next){
