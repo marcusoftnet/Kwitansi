@@ -3,7 +3,7 @@
 {% block title %}Buat kwitansi {% endblock %}
 
 {% block content %}
-<h1>Buat kwitansi</h1>
+<h1>Buat kwitansi - {{name}}</h1>
 <form name='kwitansiForm' action='/{{name}}' method='post' class='form-horizontal' role='form'>
 	<div class='form-group'>
 		<input type='hidden' id='hospitalName' name='hospitalName' value='{{name}}'>
