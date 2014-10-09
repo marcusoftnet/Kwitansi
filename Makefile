@@ -33,5 +33,5 @@ pushHeroku:
 launch:
 	heroku open
 
-publish: test createMinorRelease pushGithub	pushHeroku launch
+deployProd: test createMinorRelease pushGithub pushHeroku launch
 
