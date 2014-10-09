@@ -1,6 +1,6 @@
 {
   "name": "kwitansi",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A simple reciept printer for the Salvation Army hospitals in Indonesia",
   "main": "app.js",
   "scripts": {
