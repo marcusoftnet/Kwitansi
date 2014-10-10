@@ -1,8 +1,7 @@
 A very simple reciept printing application
 
 
-HospitalConfig
-	Name
-	List of X
-	Image path
-	Latest used kwitansi number
+TODO
+- Make the report only print current day kwitansi
+- Get cashiers from dropdown (data in hospital config)
+- Add tests ...

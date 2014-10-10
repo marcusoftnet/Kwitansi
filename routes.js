@@ -10,13 +10,13 @@ var kwitansis = dbWrap.getCollection(config.mongoUrl, "kwitansi");
 // handlers
 module.exports.home = function *() {
 	var vm = {};
-	vm.hospitals = yield hospitalConfigs.find({});
+	vm.hospitals = yield hospitalConfigs.find({}, 'name');
 	this.body = yield render("home.html", vm);
 };
 
 module.exports.create = function *(hospital) {
 	var vm = yield hospitalConfigs.findOne({name: hospital});
-	vm.kwitansiDate = new Date().toISOString().slice(0,10);
+	vm.kwitansiDate = new Date().toISOString().slice(0,10);;
 
 	this.body = yield render("create.html", vm);
 };
@@ -41,15 +41,35 @@ module.exports.print = function *(hospital) {
 };
 
 module.exports.exportToExcel = function *(hospital) {
-	var kwitansiList = yield kwitansis.find({hospitalName : hospital});
+	var start = getStartDate();
+	var stop = getStopDate();
+
+	var filter = {
+		hospitalName : hospital,
+		kwitansiDate : {
+			$gte: start,
+	        $lt: stop
+	    }
+	};
+
+	var kwitansiList = yield kwitansis.find(filter);
 
 	var vm = {
 		hospitalName : hospital,
 		kwitansis : kwitansiList
 	};
 
+	var filename = getFileName(hospital, start);
+
+	console.log("--Exporting "
+		+ vm.kwitansis.length
+		+ " kwistansi to '"
+		+ filename
+		+ "' for '"
+		+ vm.hospitalName + "'");
+
 	this.set("content-type", "application/vnd.ms-excel");
-	this.set("content-disposition", "attachment;filename=kwitansi_" + hospital + ".xls");
+	this.set("content-disposition", "attachment;filename=" + filename);
 
 	this.body = yield render("export.html", vm);
 };
@@ -75,4 +95,29 @@ function dateToYYMMDD(date) {
 	    var m = date.getMonth() + 1;
 	    var y = date.getFullYear();
 	    return '' + y + '-' + (m<=9 ? '0' + m : m) + '-' + (d <= 9 ? '0' + d : d);
-	}
+};
+
+function getStartDate() {
+	var d = new Date();
+	d.setHours(00);
+	d.setMinutes(00);
+	d.setSeconds(00);
+	return d;
+};
+
+function getStopDate() {
+	var d = new Date();
+	d.setHours(23);
+	d.setMinutes(59);
+	d.setSeconds(59);
+	return d;
+};
+
+function getFileName(hospitalName, d){
+	return "kwitansi_"
+		+ hospitalName
+		+ d.getYear()
+		+ d.getMonth()
+		+ d.getDate()
+		+ ".xls";
+};
