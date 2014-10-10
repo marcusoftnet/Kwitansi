@@ -17,13 +17,14 @@ app.use(userAuth.reqBasic);
 app.use(mount('/', auth(userAuth.user)));
 
 // routes
-var handlers = require("./routes.js");
-app.use(routes.get("/", handlers.home));
-app.use(routes.get("/:hospital", handlers.showCreate));
-app.use(routes.post("/:hospital", handlers.printKwitansi));
+var kwitansiRoutes = require("./routes/kwitansiRoutes.js");
+app.use(routes.get("/", kwitansiRoutes.home));
+app.use(routes.get("/:hospital", kwitansiRoutes.showCreate));
+app.use(routes.post("/:hospital", kwitansiRoutes.printKwitansi));
 
-app.use(routes.get("/:hospital/export", handlers.showReportPage));
-app.use(routes.post("/:hospital/export", handlers.exportToExcel));
+var reportingRoutes = require("./routes/reportingRoutes.js");
+app.use(routes.get("/:hospital/export", reportingRoutes.showReportPage));
+app.use(routes.post("/:hospital/export", reportingRoutes.exportToExcel));
 
 // fire it up
 app.listen(config.port);
