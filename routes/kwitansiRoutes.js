@@ -2,6 +2,7 @@ var parse = require("co-body");
 var render = require("../lib/render.js");
 var translateAmount = require("../lib/amountTranslator.js");
 var formatRupiahs = require("../lib/formatRupiahs.js");
+var utils = require("./utils.js");
 
 var db = require("../lib/db.js");
 var hospitalConfigs = db.hospitalConfigs;
@@ -35,7 +36,7 @@ module.exports.printKwitansi = function *(hospital) {
 	vm.imagePath = hospital + ".jpg"
 	vm.amountText = translateAmount(vm.amount);
 	vm.amount = formatRupiahs(vm.amount);
-	vm.kwitansiDate = dateToYYMMDD(vm.kwitansiDate);
+	vm.kwitansiDate = utils.dateToYYMMDD(vm.kwitansiDate);
 
 	this.body = yield render("printKwitansi.html", vm);
 };
@@ -50,16 +51,4 @@ function *nextKwitansiNo(name) {
 		return 1;
 
 	return parseInt(highestKwitansi.kwitansiNo) + 1;
-};
-
-function parseDate(input) {
-	var parts = input.split('-');
-	return new Date(parts[0], parts[1]-1, parts[2]);
-};
-
-function dateToYYMMDD(date) {
-	    var d = date.getDate();
-	    var m = date.getMonth() + 1;
-	    var y = date.getFullYear();
-	    return '' + y + '-' + (m<=9 ? '0' + m : m) + '-' + (d <= 9 ? '0' + d : d);
 };
