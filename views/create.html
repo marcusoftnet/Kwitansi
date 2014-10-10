@@ -31,7 +31,11 @@
 	<div class='form-group'>
 		<label for='cashier' class='col-sm-3 control-label lead'>Kasir:</label>
 	  	<div class='col-sm-9'>
-			<input type='text'id='cashier' name='cashier' placeholder='Cth. Bp. Marcus' class='form-control input-lg nonempty' />
+	  		<select id='cashier' name='cashier' class='form-control input-lg' nonempty>
+  			{% for cashier in cashiers %}
+	  			<option id="{{cashier}}" name="{{cashier}}">{{cashier}}</option>
+	  		{% endfor %}
+	  		</select>
 	  	</div>
 	</div>
 	<div class='form-group'>

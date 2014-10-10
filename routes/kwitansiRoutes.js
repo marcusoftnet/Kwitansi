@@ -41,7 +41,6 @@ module.exports.printKwitansi = function *(hospital) {
 	this.body = yield render("printKwitansi.html", vm);
 };
 
-
 function *nextKwitansiNo(name) {
 	var highestKwitansi = yield kwitansis.findOne(
 			{ hospitalName: name },
