@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}Yayasan Kwitansi application{% endblock %}
+
+{% block content %}
+<h1>Yayasan Kwitansi application</h1>
+<h2>Available applications</h2>
+<div class='row marketing'>
+	{% for h in hospitals %}
+	<div class='col-lg-6'>
+		<a class='btn btn-default btn-lg' role='button' href="/{{ h.name }}">{{ h.name }}</a>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

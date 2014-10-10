@@ -8,6 +8,12 @@ var hospitalConfigs = dbWrap.getCollection(config.mongoUrl, "hospitalConfig");
 var kwitansis = dbWrap.getCollection(config.mongoUrl, "kwitansi");
 
 // handlers
+module.exports.home = function *() {
+	var vm = {};
+	vm.hospitals = yield hospitalConfigs.find({});
+	this.body = yield render("home.html", vm);
+};
+
 module.exports.create = function *(hospital) {
 	var vm = yield hospitalConfigs.findOne({name: hospital});
 	vm.kwitansiDate = new Date().toISOString().slice(0,10);

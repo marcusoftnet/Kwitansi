@@ -18,6 +18,7 @@ app.use(mount('/', auth(userAuth.user)));
 
 // routes
 var handlers = require("./routes.js");
+app.use(routes.get("/", handlers.home));
 app.use(routes.get("/:hospital", handlers.create));
 app.use(routes.post("/:hospital", handlers.print));
 app.use(routes.get("/:hospital/export", handlers.exportToExcel));
