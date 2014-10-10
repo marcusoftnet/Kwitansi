@@ -2,6 +2,7 @@ A very simple reciept printing application
 
 
 TODO
+- setting of paper
 - caching of images
 - Add tests ...
 - Change configuration in GUI

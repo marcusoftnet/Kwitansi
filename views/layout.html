@@ -45,9 +45,9 @@
 			$(".numeric").keypress(function (e) {
 				if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
 					$("#errmsg")
-						.html("Hanya digit diperbolehkan")
+						.html("Hanya angka yang diperbolehkan")
 						.show()
-						.fadeOut(4000);
+						.fadeOut(6000);
 
 					return false;
 				}
@@ -57,7 +57,7 @@
 					$("#errmsg")
 						.html("Tidak boleh kosong")
 						.show()
-						.fadeOut(4000);
+						.fadeOut(6000);
 					return false;
 				}
 			});
