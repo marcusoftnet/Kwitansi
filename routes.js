@@ -14,14 +14,14 @@ module.exports.home = function *() {
 	this.body = yield render("home.html", vm);
 };
 
-module.exports.create = function *(hospital) {
+module.exports.showCreate = function *(hospital) {
 	var vm = yield hospitalConfigs.findOne({name: hospital});
-	vm.kwitansiDate = new Date().toISOString().slice(0,10);;
+	vm.kwitansiDate = new Date().toISOString().slice(0,10);
 
 	this.body = yield render("create.html", vm);
 };
 
-module.exports.print = function *(hospital) {
+module.exports.printKwitansi = function *(hospital) {
 	var postedData = yield parse(this);
 	postedData.kwitansiDate = new Date();
 	postedData.kwitansiNo = yield nextKwitansiNo(hospital);
@@ -37,12 +37,22 @@ module.exports.print = function *(hospital) {
 	vm.amount = formatRupiahs(vm.amount);
 	vm.kwitansiDate = dateToYYMMDD(vm.kwitansiDate);
 
-	this.body = yield render("print.html", vm);
+	this.body = yield render("printKwitansi.html", vm);
+};
+
+module.exports.showReportPage = function *(hospital) {
+	var vm = yield hospitalConfigs.findOne({name: hospital});
+
+	vm.startDate = dateToYYMMDD(getStartDate());
+	vm.stopDate = dateToYYMMDD(getStopDate());
+
+	this.body = yield render("createReport.html", vm);
 };
 
 module.exports.exportToExcel = function *(hospital) {
-	var start = getStartDate();
-	var stop = getStopDate();
+	var postedData = yield parse(this);
+	var start = new Date(postedData.startDate + " " + postedData.startTime + ":00")
+	var stop = new Date(postedData.stopDate + " " + postedData.stopTime + ":59")
 
 	var filter = {
 		hospitalName : hospital,
@@ -61,9 +71,9 @@ module.exports.exportToExcel = function *(hospital) {
 
 	var filename = getFileName(hospital, start);
 
-	console.log("--Exporting "
+	console.log("Reporting a total of: '"
 		+ vm.kwitansis.length
-		+ " kwistansi to '"
+		+ "' kwistansi to '"
 		+ filename
 		+ "' for '"
 		+ vm.hospitalName + "'");
@@ -73,6 +83,7 @@ module.exports.exportToExcel = function *(hospital) {
 
 	this.body = yield render("export.html", vm);
 };
+
 
 function *nextKwitansiNo(name) {
 	var highestKwitansi = yield kwitansis.findOne(
