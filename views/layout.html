@@ -47,12 +47,12 @@
 					$("#errmsg")
 						.html("Hanya digit diperbolehkan")
 						.show()
-						.fadeOut("slow");
+						.fadeOut(4000);
 
 					return false;
 				}
 			});
-			$(".nonempty").blur(function (e) {
+			$(".nonempty").focusout(function (e) {
 				if(e.currentTarget.value.length < 1){
 					$("#errmsg")
 						.html("Tidak boleh kosong")

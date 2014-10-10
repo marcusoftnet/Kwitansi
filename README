@@ -2,12 +2,13 @@ A very simple reciept printing application
 
 
 TODO
+- caching of images
 - Add tests ...
 - Change configuration in GUI
 
 DOING
-- Validation for creating kwitansi, first field
 
 DONE
-- Make the report only print current day kwitansi
+- Validation for creating kwitansi, first field
 - Get cashiers from dropdown (data in hospital config)
+- Make the report only print current day kwitansi
