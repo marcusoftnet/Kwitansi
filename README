@@ -4,4 +4,5 @@ A very simple reciept printing application
 TODO
 - Make the report only print current day kwitansi
 - Get cashiers from dropdown (data in hospital config)
+- Validation for creating kwitansi, first field
 - Add tests ...

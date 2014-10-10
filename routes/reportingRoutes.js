@@ -1,9 +1,9 @@
-var config = require('../config')();
 var parse = require("co-body");
 var render = require("../lib/render.js");
-var dbWrap = require("../lib/dbWrap.js");
-var hospitalConfigs = dbWrap.getCollection(config.mongoUrl, "hospitalConfig");
-var kwitansis = dbWrap.getCollection(config.mongoUrl, "kwitansi");
+
+var db = require("../lib/db.js");
+var hospitalConfigs = db.hospitalConfigs;
+var kwitansis = db.kwitansis;
 
 module.exports.showReportPage = function *(hospital) {
 	var vm = yield hospitalConfigs.findOne({name: hospital});

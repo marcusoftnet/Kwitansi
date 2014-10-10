@@ -1,11 +1,11 @@
-var config = require('../config')();
 var parse = require("co-body");
 var render = require("../lib/render.js");
-var dbWrap = require("../lib/dbWrap.js");
 var translateAmount = require("../lib/amountTranslator.js");
 var formatRupiahs = require("../lib/formatRupiahs.js");
-var hospitalConfigs = dbWrap.getCollection(config.mongoUrl, "hospitalConfig");
-var kwitansis = dbWrap.getCollection(config.mongoUrl, "kwitansi");
+
+var db = require("../lib/db.js");
+var hospitalConfigs = db.hospitalConfigs;
+var kwitansis = db.kwitansis;
 
 // handlers
 module.exports.home = function *() {
