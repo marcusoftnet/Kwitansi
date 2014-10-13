@@ -4,33 +4,29 @@
 	<style type="text/css">
 			.lead {
 				font-family: "Verdana";
-				font-size: large;
 				font-weight:bold;
 			}
 			.value {
 				font-family: "Verdana";
-				font-size: large;
 			}
 			.value-big {
 				font-family: "Verdana";
-				font-size: x-large;
 			}
 			.td {
 				valign : "top";
 			}
-
-	  		@page { size: landscape; }
+			@page { margin: 0;}
 	</style>
 </head>
 <body>
 	<table border="1">
 		<tr>
-			<td><img src="{{imagePath}}" /></td>
-			<td valign="top" width="850px">
+			<td><img src="{{imagePath}}" width="100px" /></td>
+			<td valign="top" with="500px">
 				<table cellpadding="4">
 					<tr>
-						<td width="250px"><div class="lead">No kwitansi:</td>
-						<td width="600px"><div class="value">{{kwitansiNo}}</div></td>
+						<td width="150px"><div class="lead">No kwitansi:</td>
+						<td><div class="value">{{kwitansiNo}}</div></td>
 					</tr>
 					<tr>
 						<td><div class="lead">Telah terima dari:</div></td>
@@ -81,7 +77,7 @@
 			setTimeout("closePrintView()", 1000);
 		});
 		function closePrintView() {
-			document.location.href = '/{{hospitalName}}';
+			//document.location.href = '/{{hospitalName}}';
 		};
 	</script>
 </body>
