@@ -23,6 +23,12 @@ module.exports.showCreate = function *(hospital) {
 };
 
 module.exports.printKwitansi = function *(hospital) {
+	console.log("YO!");
+	console.log("YO!");
+	console.log("YO!");
+	console.log("YO!");
+	console.log("YO!");
+	console.log("YO!");
 	var postedData = yield parse(this);
 	postedData.kwitansiDate = new Date();
 	postedData.kwitansiNo = yield nextKwitansiNo(hospital);

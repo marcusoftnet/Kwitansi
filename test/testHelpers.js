@@ -12,6 +12,7 @@ var kwitansis = module.exports.kwitansis = db.kwitansis;
 module.exports.cleanDb = function(){
 	co(function *(){
 		yield hospitalConfigs.remove({});
+		yield kwitansis.remove({});
 	})();
 };
 
