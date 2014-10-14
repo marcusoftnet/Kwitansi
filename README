@@ -10,6 +10,7 @@ TODO
 DOING
 
 DONE
+- Valdiation for posting empty kwitansis
 - Validation for creating kwitansi, first field
 - Get cashiers from dropdown (data in hospital config)
 - Make the report only print current day kwitansi
