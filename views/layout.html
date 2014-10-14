@@ -61,6 +61,48 @@
 					return false;
 				}
 			});
+
+			$("#kwitansiForm").submit(function( event ) {
+		  		var containsValidationError = false;
+
+		  		if(isEmptySetError("#recievedFrom")) containsValidationError = true;
+		  		if(isEmptySetError("#forPayments")) containsValidationError = true;
+		  		if(isEmptySetError("#amount")) containsValidationError = true;
+		  		if(isEmptySetError("#cashier")) containsValidationError = true;
+		  		if(isEmptySetError("#kwitansiDate")) containsValidationError = true;
+
+	  	 		if(containsValidationError){
+	  				event.preventDefault();
+	  			}
+  			});
+
+  			function isEmptySetError(selector) {
+  				if(!isEmpty(selector)) return false;
+
+  				setEmptyErrorMessage(selector);
+  				return true;
+  			}
+
+  			function isEmpty(selector){
+  				var val = $(selector).val();
+				return val.length === 0;
+  			}
+
+			function setEmptyErrorMessage(selector){
+				var message = "Tidak boleh kosong: '"
+					+ labelForControl(selector)
+					+ "'";
+
+				$("#errmsg")
+					.html(message)
+					.show();
+			};
+
+			function labelForControl(selector){
+				var selectorWithOutHash = selector.slice(1);
+				var label = $("label[for='" + selectorWithOutHash + "']").text();
+				return label.substr(0, label.length - 1);
+			};
 		});
 	</script>
 </body>
