@@ -1,20 +1,36 @@
-// var co = require("co");
-// var config = require("../config")("local");
-// var dbWrap = require("./lib/dbWrap.js");
-// var hospitalConfigs = dbWrap.getCollection(config.mongoUrl, "hospitalConfig");
-// var kwitansis = dbWrap.getCollection(config.mongoUrl, "kwitansi");
+var co = require("co");
+var config = require('../config')('local');
+var app = require("../app.js");
 
-// module.exports.kwitansis = kwitansis;
-// module.exports.hospitalConfigs = hospitalConfigs;
+module.exports.request = require("supertest").agent(app.listen());
+module.exports.testUser = config.user;
 
-// module.exports.removeAllDocs = function(done){
-// 	co(function *(){
-// 		yield kwitansis.remove({});
-// 		yield hospitalConfigs.remove({});
-// 	})(done);
-// };
+var db = require("../lib/db.js");
+var hospitalConfigs = module.exports.hospitalConfigs = db.hospitalConfigs;
+var kwitansis = module.exports.kwitansis = db.kwitansis;
 
-// var app = require("../app.js");
-// module.exports.request = require("supertest").agent(app.listen());
+module.exports.cleanDb = function(){
+	co(function *(){
+		yield hospitalConfigs.remove({});
+	})();
+};
 
-// module.exports.testUser = config.user;
+module.exports.insertTestConfig = function(name){
+	co(function *(){
+		yield hospitalConfigs.insert({
+			"name" : name,
+			"imageName" : name + ".jpg",
+			"forPayments" : [
+				"Pemeriksaan dan Pengobatan (RI)",
+				"Pemeriksaan dan Pengobatan (Rj)",
+				"Pemeriksaan laboratorium (RI)",
+				"Pemeriksaan Laboratorium (Rj)",
+				"Pemeriksaan Rontgen (RI)",
+				"Pemeriksaan Rontgen (Rj)",
+				"Honor Dokter (RI)",
+				"Honor Dokter (RJ)"
+			],
+			"cashiers" : [ "Mj Christine", "Marcus", "Anton" ]
+		});
+	})();
+};

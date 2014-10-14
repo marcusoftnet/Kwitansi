@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node --harmony app.js prod",
     "startLocal": "nodemon --harmony -e js,html --watch views",
-    "test": "./node_modules/mocha/bin/mocha --harmony-generators -u bdd -R list -b"
+    "test": "./node_modules/mocha/bin/mocha --harmony-generators -u bdd -R spec -b"
   },
   "repository": {
     "type": "git",
@@ -31,10 +31,10 @@
     "koa-favicon": "~1.1.0"
   },
   "devDependencies": {
-    "co": "~3.0.6",
+    "co": "~3.1.0",
     "should": "~4.0.1",
     "mocha": "~1.20.1",
-    "supertest": "~0.13.0",
+    "supertest": "~0.14.0",
     "semver": "~2.3.1"
   },
   "engines": {
