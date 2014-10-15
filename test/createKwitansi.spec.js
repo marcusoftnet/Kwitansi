@@ -25,17 +25,25 @@ describe("Create kwitansis", function () {
 		done();
 	});
 
-	it("stores a new kwitansi with all the correct data filled out", function (done) {
-		co(function *() {
-			request
-				.post("/" + testHospitalName)
-				.send(kwitansi_post_data)
-				.auth(testHelpers.testUser.name, testHelpers.testUser.pass)
-				.expect(200);
+	it("create kwitansi page shows up for the hospital", function (done) {
+		request
+			.get("/" + testHospitalName)
+			.auth(testHelpers.testUser.name, testHelpers.testUser.pass)
+			.expect(200, done);
+	});
+	it("create kwitansi page requires authentication", function (done) {
+		request
+			.get("/" + testHospitalName)
+			.auth(testHelpers.testUser.name, testHelpers.testUser.pass)
+			.expect(200, done);
+	});
 
-			var count = yield testHelpers.kwitansis.count({});
-			count.should.equal(1);
-		})(done);
+	it("stores a new kwitansi with all the correct data filled out", function (done) {
+		request
+			.post("/" + testHospitalName)
+			.auth(testHelpers.testUser.name, testHelpers.testUser.pass)
+			.send(kwitansi_post_data)
+			.expect(200, done);
 	});
 	it("increments the kwitansi number by one");
 	it("doesn't increment the kwitansi number at validation error");

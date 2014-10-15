@@ -8,7 +8,6 @@ var db = require("../lib/db.js");
 var hospitalConfigs = db.hospitalConfigs;
 var kwitansis = db.kwitansis;
 
-// handlers
 module.exports.home = function *() {
 	var vm = {};
 	vm.hospitals = yield hospitalConfigs.find({}, 'name');
@@ -23,12 +22,6 @@ module.exports.showCreate = function *(hospital) {
 };
 
 module.exports.printKwitansi = function *(hospital) {
-	console.log("YO!");
-	console.log("YO!");
-	console.log("YO!");
-	console.log("YO!");
-	console.log("YO!");
-	console.log("YO!");
 	var postedData = yield parse(this);
 	postedData.kwitansiDate = new Date();
 	postedData.kwitansiNo = yield nextKwitansiNo(hospital);
