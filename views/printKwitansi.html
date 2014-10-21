@@ -74,10 +74,10 @@
 	<script type="text/javascript">
 		$(document).ready(function () {
 			window.print();
-			setTimeout("closePrintView()", 1000);
+			setTimeout("closePrintView()", 100);
 		});
 		function closePrintView() {
-			document.location.href = '/{{hospitalName}}';
+			window.location.href = '/{{hospitalName}}';
 		};
 	</script>
 </body>
