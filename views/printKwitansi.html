@@ -17,6 +17,28 @@
 			}
 			@page { margin: 0;}
 	</style>
+	<script type="text/javascript">
+		var beforePrint = function() {
+		};
+
+		var afterPrint = function() {
+			document.location.href = '/{{hospitalName}}';
+		};
+
+		if (window.matchMedia) {
+			var mediaQueryList = window.matchMedia('print');
+			mediaQueryList.addListener(function(mql) {
+				if (mql.matches) {
+					beforePrint();
+				} else {
+					afterPrint();
+				}
+			});
+		}
+
+		window.onbeforeprint = beforePrint;
+		window.onafterprint = afterPrint;
+    </script>
 </head>
 <body>
 	<table border="1">
@@ -74,11 +96,7 @@
 	<script type="text/javascript">
 		$(document).ready(function () {
 			window.print();
-			setTimeout("closePrintView()", 10000);
 		});
-		function closePrintView() {
-			window.location.href = '/{{hospitalName}}';
-		};
 	</script>
 </body>
 </html>
