@@ -5,24 +5,24 @@
 			.lead {
 				font-family: "Verdana";
 				font-weight:bold;
+				font-size: large;
 			}
 			.value {
 				font-family: "Verdana";
+				font-size: large;
+
 			}
 			.value-big {
 				font-family: "Verdana";
+				font-size: x-large;
+
 			}
 			.td {
 				valign : "top";
 			}
-			@page {
-				size: Legal;
-			}
+			@page { size: 13cm 2cm; margin: 2cm; }
 			@media print {
-			  html, body {
-			    width: 210mm;
-			    height: 89mm;
-			  }
+			  html, body { width: 130cm; height: 2cm; }
 			}
 	</style>
 	<script type="text/javascript">
@@ -55,7 +55,7 @@
 			<td valign="top" with="500px">
 				<table cellpadding="4">
 					<tr>
-						<td width="150px"><div class="lead">No kwitansi:</td>
+						<td width="200px"><div class="lead">No kwitansi:</td>
 						<td><div class="value">{{kwitansiNo}}</div></td>
 					</tr>
 					<tr>
