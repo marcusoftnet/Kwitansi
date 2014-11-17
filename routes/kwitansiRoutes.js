@@ -9,8 +9,9 @@ var hospitalConfigs = db.hospitalConfigs;
 var kwitansis = db.kwitansis;
 
 module.exports.home = function *() {
+	var pjson = require('../package.json');
 	var vm = {
-		version : "0.24.0"
+		version : pjson.version
 	};
 	vm.hospitals = yield hospitalConfigs.find({}, 'name');
 	this.body = yield render("home.html", vm);
