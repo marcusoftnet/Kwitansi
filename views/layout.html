@@ -12,10 +12,7 @@
 	<![endif]-->
 
 	<style type="text/css">
-		#errmsg
-		{
-			color: red;
-		}
+		#errmsg { color: red; }
 	</style>
 </head>
 <body>
@@ -44,6 +41,16 @@
 		$(document).ready(function () {
 			$("input:text:visible:first").focus();
 
+			$(".nonempty").focusout(function (e) {
+				if(e.currentTarget.value.length < 1){
+					$("#errmsg")
+						.html("Tidak boleh kosong")
+						.show()
+						.fadeOut(6000);
+					return false;
+				}
+			});
+
 			$(".numeric").keypress(function (e) {
 				if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
 					$("#errmsg")
@@ -51,15 +58,6 @@
 						.show()
 						.fadeOut(6000);
 
-					return false;
-				}
-			});
-			$(".nonempty").focusout(function (e) {
-				if(e.currentTarget.value.length < 1){
-					$("#errmsg")
-						.html("Tidak boleh kosong")
-						.show()
-						.fadeOut(6000);
 					return false;
 				}
 			});
