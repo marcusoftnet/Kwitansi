@@ -15,7 +15,15 @@
 			.td {
 				valign : "top";
 			}
-			@page { margin: 0;}
+			@page {
+				size: Legal;
+			}
+			@media print {
+			  html, body {
+			    width: 210mm;
+			    height: 89mm;
+			  }
+			}
 	</style>
 	<script type="text/javascript">
 		var beforePrint = function() {
@@ -43,7 +51,7 @@
 <body>
 	<table border="1">
 		<tr>
-			<td><img src="{{imagePath}}" width="100px" /></td>
+			<td width="100px">&nbsp;</td>
 			<td valign="top" with="500px">
 				<table cellpadding="4">
 					<tr>
