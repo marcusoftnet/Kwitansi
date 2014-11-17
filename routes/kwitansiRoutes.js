@@ -9,7 +9,9 @@ var hospitalConfigs = db.hospitalConfigs;
 var kwitansis = db.kwitansis;
 
 module.exports.home = function *() {
-	var vm = {};
+	var vm = {
+		version : "0.24.0"
+	};
 	vm.hospitals = yield hospitalConfigs.find({}, 'name');
 	this.body = yield render("home.html", vm);
 };
