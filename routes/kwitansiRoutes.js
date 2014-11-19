@@ -33,12 +33,17 @@ module.exports.printKwitansi = function *(hospital) {
 	yield kwitansis.insert(postedData);
 
 	// Create viewmodel
-	var vm = postedData;
-	vm.hospitalName = hospital;
-	vm.imagePath = hospital + ".jpg"
-	vm.amountText = translateAmount(vm.amount);
-	vm.amount = formatRupiahs(vm.amount);
-	vm.kwitansiDate = utils.dateToYYMMDD(vm.kwitansiDate);
+	var kwitansiVm = postedData;
+	kwitansiVm.hospitalName = hospital;
+	kwitansiVm.imagePath = hospital + ".jpg"
+	kwitansiVm.amountText = translateAmount(kwitansiVm.amount);
+	kwitansiVm.amount = formatRupiahs(kwitansiVm.amount);
+	kwitansiVm.kwitansiDate = utils.dateToYYMMDD(kwitansiVm.kwitansiDate);
+
+	var vm = {
+		hospitalName : hospital,
+		copies : [kwitansiVm, kwitansiVm, kwitansiVm]
+	};
 
 	this.body = yield render("printKwitansi.html", vm);
 };

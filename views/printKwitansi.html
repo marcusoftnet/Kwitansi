@@ -5,25 +5,30 @@
 			.lead {
 				font-family: "Verdana";
 				font-weight: bold;
-				font-size: large;
 			}
 			.value {
 				font-family: "Verdana";
-				font-size: large;
-
 			}
 			.value-big {
-				font-family: "Verdana";
-				font-size: x-large;
-
+				font-weight: bold;
+				font-size: large;
 			}
 			.td {
 				valign : "top";
 			}
-			@page { size: 14cm 21cm; }
-			@media print {
-			  html, body { height: 14cm; width: 21cm;  }
+
+			/* @page { size: with x height */
+			/*@page { size: 20cm 10cm; margin: 0px; }*/
+			@page {
+				size: A4;
+				margin : 0px;
 			}
+	/*		@media print {
+			  html, body {
+			  	width: 210mm;
+			  }
+			}*/
+			/*body { border: 2px solid #000000;  }*/
 	</style>
 	<script type="text/javascript">
 		var beforePrint = function() {
@@ -49,37 +54,35 @@
     </script>
 </head>
 <body>
-	<table border="1">
+	{% for k in copies %}
+	<table border="1px">
 		<tr>
-			<td width="100px">&nbsp;</td>
-			<td valign="top" with="500px">
+			<td width="80px"><img src="{{k.imagePath}}" width="80px" /></td>
+			<td>
 				<table cellpadding="4">
 					<tr>
 						<td width="200px"><div class="lead">No kwitansi:</td>
-						<td><div class="value">{{kwitansiNo}}</div></td>
+						<td><div class="value">{{k.kwitansiNo}}</div></td>
 					</tr>
 					<tr>
 						<td><div class="lead">Telah terima dari:</div></td>
-						<td><div class="value">{{recievedFrom}}</div></td>
+						<td><div class="value">{{k.recievedFrom}}</div></td>
 					</tr>
 					<tr>
 						<td><div class="lead">Untuk Pembayaran:</div></td>
-						<td><div class="value">{{forPayments}}</div></td>
+						<td><div class="value">{{k.forPayments}}</div></td>
 					</tr>
 					<tr>
 						<td><div class="lead">Tanggal:</div></td>
-						<td><div class="value">{{kwitansiDate}}</div></td>
+						<td><div class="value">{{k.kwitansiDate}}</div></td>
 					</tr>
 					<tr>
 						<td><div class="lead">Rupiah:</div></td>
-						<td><div class="value-big">Rp. {{amount}}</div></td>
+						<td><div class="value-big">Rp. {{k.amount}}</div></td>
 					</tr>
 					<tr>
 						<td><div class="lead">Uang Sejumlah:</div></td>
-						<td><div class="value">{{amountText}} rupiah</div></td>
-					</tr>
-					<tr>
-						<td colspan="2">&nbsp;</td>
+						<td><div class="value">{{k.amountText}} rupiah</div></td>
 					</tr>
 					<tr>
 						<td colspan="2">&nbsp;</td>
@@ -94,12 +97,14 @@
 					</tr>
 					<tr>
 						<td>&nbsp;</td>
-						<td><div class="value">{{cashier}}</div></td>
+						<td><div class="value">{{k.cashier}}</div></td>
 					</tr>
 				</table>
 			</td>
 		</tr>
 	</table>
+	<hr>
+	{% endfor %}
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function () {
