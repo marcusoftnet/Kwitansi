@@ -6,11 +6,15 @@ var routes = require("koa-route");
 var serve = require('koa-static');
 var mount = require('koa-mount');
 var auth = require('koa-basic-auth');
+var staticCache = require('koa-static-cache');
+var logger = require('koa-logger');
 var userAuth = require('./lib/authentication');
 
 // middleware
+app.use(logger());
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(serve(__dirname + '/public'));
+app.use(staticCache(__dirname +'/public'), { maxAge: 1 * 24 * 60 * 60 });
 
 // Security
 app.use(userAuth.reqBasic);
