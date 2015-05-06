@@ -4,9 +4,9 @@
   "description": "A simple reciept printer for the Salvation Army hospitals in Indonesia",
   "main": "app.js",
   "scripts": {
-    "start": "node --harmony app.js prod",
-    "startLocal": "nodemon --harmony -e js,html --watch views",
-    "test": "./node_modules/mocha/bin/mocha --harmony-generators -u bdd -R spec -b"
+    "start": "node app.js prod",
+    "startLocal": "nodemon -e js,html --watch views",
+    "test": "./node_modules/mocha/bin/mocha -u bdd -R spec -b"
   },
   "repository": {
     "type": "git",
