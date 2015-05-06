@@ -13,7 +13,7 @@ module.exports.cleanDb = function(){
 	co(function *(){
 		yield hospitalConfigs.remove({});
 		yield kwitansis.remove({});
-	})();
+	});
 };
 
 module.exports.insertTestConfig = function(name){
@@ -33,5 +33,5 @@ module.exports.insertTestConfig = function(name){
 			],
 			"cashiers" : [ "Mj Christine", "Marcus", "Anton" ]
 		});
-	})();
+	});
 };

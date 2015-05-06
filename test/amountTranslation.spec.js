@@ -244,7 +244,4 @@ describe("Amount translation", function () {
 	it('tranlates 1234 to seribu dua ratus tiga puluh empat', function(done){ assert(1234,'seribu dua ratus tiga puluh empat', done);});
 	it('tranlates 123 to seratus dua puluh tiga', function(done){ assert(123,'seratus dua puluh tiga', done);});
 	it('tranlates 12 to dua belas', function(done){ assert(12,'dua belas', done);});
-
-	
-
 });

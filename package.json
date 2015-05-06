@@ -33,11 +33,11 @@
     "koa-logger": "~1.2.2"
   },
   "devDependencies": {
-    "co": "~3.1.0",
-    "should": "~4.0.4",
+    "co": "^4.5.4",
     "mocha": "~1.20.1",
-    "supertest": "~0.14.0",
-    "semver": "~2.3.1"
+    "semver": "~2.3.1",
+    "should": "~4.0.4",
+    "supertest": "~0.14.0"
   },
   "engines": {
     "iojs": "~1.8.1"
