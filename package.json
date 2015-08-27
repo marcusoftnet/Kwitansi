@@ -19,19 +19,19 @@
   "author": "Marcus Hammarberg, @marcusoftnet ",
   "license": "MIT",
   "dependencies": {
-    "co-monk": "~1.0.0",
     "co-body": "0.0.1",
-    "koa-route": "~1.1.4",
-    "koa-static": "~1.4.5",
+    "co-monk": "~1.0.0",
+    "co-view": "0.0.1",
     "koa": "~0.7.0",
-    "monk": "~0.9.0",
-    "co-views": "~0.2.0",
-    "swig": "~1.3.2",
-    "koa-mount": "~1.3.0",
     "koa-basic-auth": "~1.1.1",
     "koa-favicon": "~1.1.0",
+    "koa-logger": "~1.2.2",
+    "koa-mount": "~1.3.0",
+    "koa-route": "~1.1.4",
+    "koa-static": "~1.4.5",
     "koa-static-cache": "~2.0.0",
-    "koa-logger": "~1.2.2"
+    "monk": "~0.9.0",
+    "swig": "^1.4.2"
   },
   "devDependencies": {
     "co": "^4.5.4",
@@ -41,6 +41,6 @@
     "supertest": "~0.14.0"
   },
   "engines": {
-    "iojs": "~1.8.1"
+    "iojs": "~3.0.0"
   }
 }
