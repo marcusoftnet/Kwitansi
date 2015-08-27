@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node app.js prod",
     "startLocal": "nodemon -e js,html --watch views",
+    "testing": "node app.js staging",
     "test": "./node_modules/mocha/bin/mocha -u bdd -R spec -b"
   },
   "repository": {

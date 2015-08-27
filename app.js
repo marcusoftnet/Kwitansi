@@ -32,4 +32,5 @@ app.use(routes.post("/:hospital/export", reportingRoutes.exportToExcel));
 
 // fire it up
 app.listen(config.port);
-console.log('The app is listening. Port:'+ config.port);
+console.log('The app is listening. Config:');
+console.log(config.port);
