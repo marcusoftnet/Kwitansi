@@ -1,6 +1,6 @@
 {
   "name": "kwitansi",
-  "version": "0.43.0",
+  "version": "0.44.0",
   "description": "A simple reciept printer for the Salvation Army hospitals in Indonesia",
   "main": "app.js",
   "scripts": {
@@ -8,14 +8,12 @@
     "startLocal": "nodemon -e js,html --watch views",
     "testing": "node app.js staging",
     "test": "mocha -u bdd -R spec -b",
-
     "test:deploy": "npm test -- -R dot",
     "launch": "open https://kwitansi.herokuapp.com",
     "push:heroku": "git push heroku master",
     "push:github": "git push --tags origin HEAD:master",
     "push": "npm run push:github && npm run push:heroku",
     "deploy:prod": "npm run test:deploy && npm version minor && npm run push && npm run launch"
-
   },
   "repository": {
     "type": "git",
