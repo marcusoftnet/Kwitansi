@@ -7,7 +7,15 @@
     "start": "node app.js prod",
     "startLocal": "nodemon -e js,html --watch views",
     "testing": "node app.js staging",
-    "test": "./node_modules/mocha/bin/mocha -u bdd -R spec -b"
+    "test": "mocha -u bdd -R spec -b",
+
+    "test:deploy": "npm test -- -R dot",
+    "launch": "open https://kwitansi.herokuapp.com",
+    "push:heroku": "git push heroku master",
+    "push:github": "git push --tags origin HEAD:master",
+    "push": "npm run push:github && npm run push:heroku",
+    "deploy:prod": "npm run test:deploy && npm version minor && npm run push && npm run launch"
+
   },
   "repository": {
     "type": "git",
